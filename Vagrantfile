@@ -1,6 +1,5 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-default_box = "generic/opensuse15"
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -15,7 +14,7 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
 
   config.vm.define "master" do |master|
-    master.vm.box = default_box
+    master.vm.box = "ubuntu/xenial64"
     master.vm.hostname = "master"
     master.vm.network 'private_network', ip: "192.168.0.200",  virtualbox__intnet: true
     master.vm.network "forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
@@ -26,6 +25,7 @@ Vagrant.configure("2") do |config|
       end
     master.vm.provider "virtualbox" do |v|
       v.memory = "3072"
+      v.cpus = "4"
       v.name = "master"
       end
     master.vm.provision "shell", inline: <<-SHELL
@@ -67,7 +67,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  # config.vm.synced_folder "./", "/vagrant_data"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
