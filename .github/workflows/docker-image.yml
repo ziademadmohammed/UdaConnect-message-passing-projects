@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./modules/connection_api
-          file: ./Dockerfile
+          # file: ./Dockerfile
           platforms: linux/amd64
           push: true
           tags: ziademad/connection_api:latest
