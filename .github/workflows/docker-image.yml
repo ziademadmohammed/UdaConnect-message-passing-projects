@@ -28,40 +28,35 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./modules/connection_api
-          # file: ./Dockerfile
           platforms: linux/amd64
           push: true
           tags: ziademad/connection_api:latest
-      # - name: Build and push
-      #   uses: docker/build-push-action@v3
-      #   with:
-      #     context: .
-      #     file: ./modules/location_api/Dockerfile
-      #     platforms: linux/amd64
-      #     push: true
-      #     tags: ziademad/location_api:latest
-      # - name: Build and push
-      #   uses: docker/build-push-action@v3
-      #   with:
-      #     context: .
-      #     file: ./modules/person_api/Dockerfile
-      #     platforms: linux/amd64
-      #     push: true
-      #     tags: ziademad/person_api:latest
-      # - name: Build and push
-      #   uses: docker/build-push-action@v3
-      #   with:
-      #     context: .
-      #     file: ./modules/frontend/Dockerfile
-      #     platforms: linux/amd64
-      #     push: true
-      #     tags: ziademad/frontend:latest
-      # - name: Build and push
-      #   uses: docker/build-push-action@v3
-      #   with:
-      #     context: .
-      #     file: ./modules/kafka/Dockerfile
-      #     platforms: linux/amd64
-      #     push: true
-      #     tags: ziademad/kafka:latest
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ./modules/location_api
+          platforms: linux/amd64
+          push: true
+          tags: ziademad/location_api:latest
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ./modules/person_api
+          platforms: linux/amd64
+          push: true
+          tags: ziademad/person_api:latest
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ./modules/frontend
+          platforms: linux/amd64
+          push: true
+          tags: ziademad/frontend:latest
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ./modules/kafka
+          platforms: linux/amd64
+          push: true
+          tags: ziademad/kafka-consumer:latest
           

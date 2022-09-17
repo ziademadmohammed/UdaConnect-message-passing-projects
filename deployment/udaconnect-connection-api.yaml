@@ -31,7 +31,7 @@ spec:
         service: udaconnect-connection-api
     spec:
       containers:
-      - image: solondungu/udaconnect-connection-api:latest
+      - image: ziademad/connection-api:latest
         name: udaconnect-connection-api
         imagePullPolicy: Always
         env:

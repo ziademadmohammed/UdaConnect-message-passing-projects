@@ -31,7 +31,7 @@ spec:
         service: udaconnect-location-api
     spec:
       containers:
-      - image: solondungu/udaconnect-location-api:latest
+      - image: ziademad/location-api:latest
         name: udaconnect-location-api
         imagePullPolicy: Always
         env:
