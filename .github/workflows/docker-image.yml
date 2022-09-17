@@ -27,40 +27,40 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./modules/connection_api
-          file: ./Dockerfile
+          context: .
+          file: ./modules/connection_api/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ziademad/connection_api:latest
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./modules/location_api
-          file: ./Dockerfile
+          context: .
+          file: ./modules/location_api/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ziademad/location_api:latest
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./modules/person_api
-          file: ./Dockerfile
+          context: .
+          file: ./modules/person_api/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ziademad/person_api:latest
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./modules/frontend
-          file: ./Dockerfile
+          context: .
+          file: ./modules/frontend/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ziademad/frontend:latest
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./modules/kafka
-          file: ./Dockerfile
+          context: .
+          file: ./modules/kafka/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ziademad/kafka:latest
