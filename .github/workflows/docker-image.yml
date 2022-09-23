@@ -27,13 +27,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./modules/connection_api
-          platforms: linux/amd64
-          push: true
-          tags: ziademad/connection_api:latest
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
           context: ./modules/location_api
           platforms: linux/amd64
           push: true
@@ -41,10 +34,17 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./modules/person_api
+          context: ./modules/location_consumer
           platforms: linux/amd64
           push: true
-          tags: ziademad/person_api:latest
+          tags: ziademad/location_consumer:latest
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ./modules/location_producer
+          platforms: linux/amd64
+          push: true
+          tags: ziademad/location_producer:latest
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
@@ -55,8 +55,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./modules/kafka
+          context: ./modules/person_api
           platforms: linux/amd64
           push: true
-          tags: ziademad/kafka-consumer:latest
+          tags: ziademad/person_api:latest
           

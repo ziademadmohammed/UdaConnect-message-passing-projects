@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
 
   config.vm.define "master" do |master|
-    master.vm.box = "ubuntu/xenial64"
+    master.vm.box = "ubuntu/focal64"
     master.vm.hostname = "master"
     master.vm.network 'private_network', ip: "192.168.0.200",  virtualbox__intnet: true
     master.vm.network "forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
@@ -28,13 +28,13 @@ Vagrant.configure("2") do |config|
       v.cpus = "4"
       v.name = "master"
       end
-    master.vm.provision "shell", inline: <<-SHELL
-      sudo zypper refresh
-      sudo zypper --non-interactive install bzip2
-      sudo zypper --non-interactive install etcd
-      sudo zypper --non-interactive install apparmor-parser
-      curl -sfL https://get.k3s.io | sh -
-    SHELL
+    # master.vm.provision "shell", inline: <<-SHELL
+    #   sudo zypper refresh
+    #   sudo zypper --non-interactive install bzip2
+    #   sudo zypper --non-interactive install etcd
+    #   sudo zypper --non-interactive install apparmor-parser
+    #   curl -sfL https://get.k3s.io | sh -
+    # SHELL
   end
 
 
