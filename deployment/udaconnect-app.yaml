@@ -31,14 +31,7 @@ spec:
         service: udaconnect-app
     spec:
       containers:
-      - image: ziademad/udaconnect-app:latest
+      - image: ziademad/frontend:latest
         name: udaconnect-app
         imagePullPolicy: Always
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "64m"
-          limits:
-            memory: "256Mi"
-            cpu: "256m"
       restartPolicy: Always

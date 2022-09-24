@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: Api for connections
+  description: dealing with  connections
+  version: latest
+paths:
+  /api-connection/persons/{person_id}:
+    get:
+      description: Retrieve  connections using  specific time frame and specific distance
+      summary: Retrieve all connections
+      operationId: find_contacts
+      responses:
+        "200":
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/connection"
+      parameters:
+        - name: start_date
+          description: start date to find a connection
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: person_id
+          required: true
+          in: path
+          description: person id value that need to be considered for filter
+          schema:
+            type: integer
+        - name: meters
+          in: query
+          required: true
+          description: distance between two persons
+          schema:
+            type: integer
+        - name: end_date
+          description: end date to find a connection
+          in: query
+          required: true
+          schema:
+            format: date
+            type: string
+
+
+components:
+  schemas:
+    connection:
+      type: object
+      properties:
+        Persons:
+          type: object
+          properties:
+            id:
+              type: integer
+            first_name:
+              type: string
+            last_name:
+              type: string
+            company_name:
+              type: string
+        location:
+          type: object
+          properties:
+            person_id:
+              type: integer
+            id:
+              type: integer
+            Creation_time:
+              type: string
+              format: time
+            coordinates:
+              type: object
+              properties:
+                logatitude:
+                  type: string
+                altitude:
+                  type: string

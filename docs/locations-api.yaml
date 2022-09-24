@@ -1,0 +1,74 @@
+---
+openapi: 3.0.0
+info:
+  title: Api for locations
+  description: dealing with locations
+  version: latest
+paths:
+  /api-persons/locations:
+    post:
+      summary: Create one location
+      operationId: create
+      description: Create one location.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/location"
+        required: true
+      responses:
+        "202":
+          description: successfully added a location
+    get:
+      summary: retreive all locations
+      operationId: retrieveall
+      description: retrieve all  locations.
+      responses:
+        "200":
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/location"
+
+  /api-locations/locations/{location_id}:
+    get:
+      operationId: retreive
+      description: Retrieve  location using location id
+      summary: Retrieve one location
+      responses:
+        "200":
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/location"
+      parameters:
+        - name: location_id
+          in: path
+          description: location id value that need to be considered for filter
+          required: true
+          schema:
+            type: integer
+
+components:
+  schemas:
+    location:
+      type: object
+      properties:
+        person_id:
+          type: integer
+        id:
+          type: integer
+        Creation_time:
+          type: string
+          format: time
+        coordinates:
+          type: object
+          properties:
+            logatitude:
+              type: string
+            altitude:
+              type: string

@@ -1,0 +1,72 @@
+---
+openapi: 3.0.0
+info:
+  title: Api for persons
+  description: users of the apps are described as persons
+  version: latest
+paths:
+  /api-persons/persons/{person_id}:
+    get:
+      operationId: retreive
+      description: Retrieve select person using person id
+      summary: Retrieve one person (the user that we want to get by his id)
+      responses:
+        "200":
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Persons"
+      parameters:
+        - name: person_id
+          in: path
+          description: person id value that need to be considered for filter
+          required: true
+          schema:
+            type: integer
+
+  /api-persons/persons:
+    post:
+      summary: Create one person
+      operationId: create
+      description: Create one person.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Persons"
+        required: true
+      responses:
+        "200":
+          description: successfully added a person
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Persons"
+    get:
+      summary: retreive all persons
+      operationId: retrieveall
+      description: retrieve all  persons.
+      responses:
+        "200":
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Persons"
+
+components:
+  schemas:
+    Persons:
+      type: object
+      properties:
+        company_name:
+          type: string
+        id:
+          type: integer
+        last_name:
+          type: string
+        first_name:
+          type: string

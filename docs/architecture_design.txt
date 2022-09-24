@@ -1,12 +1,14 @@
-- Person microservice:
-  is a RESTFul API service responsible for keeping customer information.
-- Connection microservice:
-  gets data from Person microservice through RESTFul API.
-  Here ,we separate Location service into location event producer microservice and location consumer microservice.  
-- location event producer microservice:
-  produces user location sent from mobiles devices. By using gRPC
-  which will be efficient and match the requirement of processing a lot of users data concurrently.
-- Kafka cluster:
-  receives this location data which will be consumed by location consumer microservice.
+Persons API:
+- Separation from the API bundle makes sense because this is the main connection point for the frontend 
+- sperating this serive is beneficial to scaling the application.
 
-and this data will be stored in postgres database. Location event producer microservice is the service that interacts through a RESTFul API with the React Frontend.
+Location API:
+- the Location API is used to extract the location from the database.
+- seprating this into a its own microservice will reduce the traffic from the person api
+
+Location Producer:
+- a GRPC Kafka Producer.
+- will be efficient and match the requirement of processing a lot of users data concurrently.
+
+Location Consumer:
+- reads data from a Kafka queue and writes it to a database. 
